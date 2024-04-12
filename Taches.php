@@ -2,8 +2,9 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+require_once "CRUDTaches.php";
 //Creation de la classe Taches
-class Taches {
+class Taches  {
 
     //Creation des propriétés
     private $connexion;
@@ -114,11 +115,53 @@ class Taches {
         } catch (PDOEXception $e) {
             throw new Exception("ERREUR: Impossible de supprimer le billet. " . $e->getMessage());
         }
-    }    
+    }  
+    
+    public function getById($id){
+        try {
+            $sql = "SELECT * FROM Taches WHERE id = :id";
+
+            //preparation de la requete 
+            $stmt = $this->connexion->prepare($sql);
+
+            // Liaison de la valeur de l'id au paramètre
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+            // Exécution de la requête
+            $stmt->execute();
+             
+            $tache = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $tache;
+        } catch (\Throwable $th) {
+            echo "Une erreur s'est produite : " . $th->getMessage();
+            return null;
+        }
+    }
+    public function updateTaches($id, $libelle,$description,$etat){
+        try {
+        //Requete pour faire la modificaton
+        $sql = "UPDATE Taches SET libelle = :libelle, description = :description, etat = :etat WHERE id = :id";
+
+        //preparation de la requete 
+        $stmt = $this->connexion->prepare($sql);
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':libelle', $libelle);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':etat', $etat);
+
+        // Exécution de la requête
+        $stmt->execute();
+
+        header("Location: readTaches.php");
+        exit();
+    
+        } catch (PDOException $e) {
+            throw new Exception("ERREUR: Impossible de modifier une Tache. " . $e->getMessage());
+        }
 
 }
 
-
-
+}
 
 ?>
