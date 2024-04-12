@@ -1,5 +1,6 @@
 
 <?php
+require_once "Taches.php";
 // Définir les constantes pour les informations de la base de données
 define('DB_SERVER' , 'localhost' );
 define('DB_USERNAME' , 'root' );
@@ -14,6 +15,9 @@ try {
 } catch (PDOExeption $e) {
    die("Erreur : Impossible de se connecter à la base de données " . $e->getMessage());
 }
-
+ 
+$taches = new Taches ($connexion, "A", "X", "2024-03-02
+","2024-04-12 01:11:19","A faire", "En attente");
+$Tache = $taches-> readTaches();
 
 ?>

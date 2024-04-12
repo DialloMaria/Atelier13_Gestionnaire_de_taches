@@ -66,7 +66,7 @@ button[type="submit"]:hover {
 <body>
     <div class="container">
         <h2>Nouvelle Tâche</h2>
-        <form action="#" method="post">
+        <form action="addTaches.php" method="post">
             <div class="form-group">
                 <label for="libelle">Libellé :</label>
                 <input type="text" id="libelle" name="libelle" required>
@@ -84,22 +84,22 @@ button[type="submit"]:hover {
                 <select id="priorite" name="priorite" required>
                     <option value="faible">Faible</option>
                     <option value="moyenne">Moyenne</option>
-                    <option value="haute">Haute</option>
+                    <option value="élevée">Haute</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="etat">État :</label>
                 <select id="etat" name="etat" required>
-                    <option value="en_attente">En attente</option>
-                    <option value="en_cours">En cours</option>
-                    <option value="terminee">Terminée</option>
+                    <!-- <option value="faire">À Faire</option> -->
+                    <option value="cours">En cours</option>
+                    <option value="terminée">Terminée</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="date_insertion">Date d'insertion :</label>
                 <input type="text" id="date_insertion" name="date_insertion" value="<?php echo date('Y-m-d H:i:s'); ?>" readonly>
             </div>
-            <button type="submit">Ajouter</button>
+            <a href="readTaches.php"><button name="submit" type="submit">Ajouter</button></a>
         </form>
     </div>
 </body>
