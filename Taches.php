@@ -68,7 +68,7 @@ class Taches {
             $stmt->execute();
     
             // Redirection vers la page index.php après une insertion réussie
-            header("Location: index.php");
+            header("Location: readTaches.php");
             exit(); // arrêter l'exécution du script après la redirection avec exit()
         } catch (PDOException $e) {
             die("Erreur: Impossible d'ajouter une tâche" . $e->getMessage());
@@ -86,8 +86,8 @@ class Taches {
              $stmt->execute();
  
              //recuperation des resultats
-             $resultats=$stmt->fetchAll(PDO::FETCH_ASSOC);
-             return $resultats;
+             $Tache=$stmt->fetchAll(PDO::FETCH_ASSOC);
+             return $Tache;
          } 
          catch (PDOException $e) {
              die("erreur:Impossible d'afficher les habitants" .$e->getMessage());

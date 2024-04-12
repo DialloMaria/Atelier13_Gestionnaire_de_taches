@@ -1,5 +1,7 @@
 
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 require_once "Taches.php";
 // Définir les constantes pour les informations de la base de données
 define('DB_SERVER' , 'localhost' );
@@ -17,7 +19,7 @@ try {
 }
  
 $taches = new Taches ($connexion, "A", "X", "2024-03-02
-","2024-04-12 01:11:19","A faire", "En attente");
+","2024-04-12 01:11:19","faire", "En attente");
 $Tache = $taches-> readTaches();
 
 ?>
