@@ -22,6 +22,10 @@ ini_set('display_errors', 1);
         th {
             background-color: #f2f2f2;
         }
+        .bouton{
+            
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -33,7 +37,7 @@ ini_set('display_errors', 1);
                 <th>Date d'échéance</th>
                 <th>Priorité</th>
                 <th>État</th>
-                <th>Detail</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -44,10 +48,16 @@ ini_set('display_errors', 1);
                     <td><?php echo $Taches['Date_echeance']; ?></td>
                     <td><?php echo $Taches['priorite']; ?></td>
                     <td><?php echo $Taches['etat']; ?></td>
+                    <td><button class="btn btn-delete"><a href="deleteTaches.php?id=<?php echo $Taches ['id']; ?>">Supprimer</a></button></td>
+                    <td><button class="btn btn-delete"><a href="updateTaches.php?id=<?php echo $Taches ['id']; ?>">Modifier</a></button></td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
+
+    <div class="bouton">
+        <button><a href="index.php">Retour</a></button>
+    </div>
 </body>
     
 </html>

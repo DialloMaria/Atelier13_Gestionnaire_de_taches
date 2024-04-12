@@ -94,6 +94,28 @@ class Taches {
          }
         }
 
+    public function deleteTaches($id){
+        try {
+             //requete pour supprimer une taches
+            $sql = "DELETE FROM Taches WHERE id = :id";
+
+            //preparation de la requete 
+            $stmt = $this->connexion->prepare($sql);
+
+            // Liaison de la valeur de l'id au paramètre
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+            // Exécution de la requête
+            $stmt->execute();
+             
+            header("Location: readTaches.php");
+            exit();
+
+        } catch (PDOEXception $e) {
+            throw new Exception("ERREUR: Impossible de supprimer le billet. " . $e->getMessage());
+        }
+    }    
+
 }
 
 
