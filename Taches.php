@@ -132,7 +132,7 @@ class Taches  {
              
             $tache = $stmt->fetch(PDO::FETCH_ASSOC);
             return $tache;
-        } catch (\Throwable $th) {
+        } catch (PDOExecption $e) {
             echo "Une erreur s'est produite : " . $th->getMessage();
             return null;
         }

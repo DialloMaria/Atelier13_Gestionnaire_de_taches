@@ -111,6 +111,3 @@ if(isset($_GET['id'])){
 
             <button name="submit" type="submit">Modifier</button>
         </form>
-    </div>
-
-</html>
